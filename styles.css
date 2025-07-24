@@ -1,0 +1,337 @@
+/* Paleta de colores */
+:root {
+  --wine: #5c2c3d;
+  --wine-dark: #4a2432;
+  --wine-light: #7a3a52;
+  --gold: #c0a062;
+  --gold-light: #d4b87a;
+  --cream: #f8f4e9;
+  --gray-light: #f0f0f0;
+  --gray-dark: #6c757d;
+}
+
+/* Reset y estilos base */
+body {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  background-color: var(--cream);
+}
+
+/* Navbar */
+.navbar {
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--gray-light);
+  background-color: white;
+}
+
+.navbar-brand {
+  font-size: 1.25rem;
+  font-weight: 300;
+  letter-spacing: 1px;
+  margin: 0 auto;
+  color: var(--wine);
+}
+
+/* Hero Section */
+.hero {
+  background-image: url('https://images.unsplash.com/photo-1700893417209-18dc88c989a0?q=80&w=2070&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  position: relative;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  padding: 0 20px;
+}
+
+.hero h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Botón Explorar - Versión Corregida */
+.btn-outline-light {
+  /* Estilos base */
+  border: 1px solid white;
+  border-radius: 0;
+  padding: 10px 30px;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  color: white;
+  background: transparent;
+  z-index: 1; /* Asegura que el texto esté por encima del pseudo-elemento */
+  
+  /* Animación de flotación */
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* Fondo que se desliza */
+.btn-outline-light::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: white;
+  transition: all 0.4s ease;
+  z-index: -1; /* Coloca el fondo detrás del texto */
+}
+
+/* Efecto hover */
+.btn-outline-light:hover {
+  animation: none;
+  transform: translateY(-5px);
+  color: var(--wine); /* Usa la variable de color vino */
+}
+
+.btn-outline-light:hover::before {
+  left: 0;
+}
+
+/* Asegura que el texto tenga posición relativa */
+.btn-outline-light span {
+  position: relative;
+}
+
+/* Sección de Productos */
+#productos {
+  padding: 5rem 0;
+  background-color: white;
+  margin: 3rem 0;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05), 
+              0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Contenedor principal */
+.products-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* Fila de productos */
+.products-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 -15px;
+}
+
+/* Columnas de productos */
+.product-col {
+  flex: 0 0 100%;
+  max-width: 100%;
+  padding: 0 15px;
+  margin-bottom: 30px;
+}
+
+@media (min-width: 768px) {
+  .product-col {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+
+@media (min-width: 992px) {
+  .product-col {
+    flex: 0 0 33.333%;
+    max-width: 33.333%;
+  }
+}
+
+/* Tarjeta de producto */
+.product-card {
+  height: 100%;
+  border: 1px solid var(--gray-light);
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+}
+/* Efecto hover para la tarjeta */
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(92, 44, 61, 0.2);
+  border-color: var(--wine-light);
+}
+
+.product-img-container {
+  height: 280px;
+  overflow: hidden;
+}
+
+.product-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.product-card:hover .product-img {
+  transform: scale(1.03);
+}
+
+.product-body {
+  padding: 1.5rem;
+  text-align: center;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-title {
+  font-size: 1.1rem;
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+  color: var(--wine);
+}
+
+.product-price {
+  color: var(--gold);
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.btn-wine {
+  margin-top: auto;
+}
+
+/* Footer */
+.footer {
+  background-color: var(--wine);
+  padding: 3rem 0;
+  margin-top: 3rem;
+  text-align: center;
+  color: white;
+}
+
+.social-icons {
+  margin-bottom: 1rem;
+}
+
+.social-icons a {
+  color: white;
+  margin: 0 0.5rem;
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: var(--gold);
+}
+
+.copyright {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 1rem;
+}
+/* Estilos del carrito */
+.carrito-contador {
+  font-size: 0.7rem;
+  padding: 0.25rem 0.4rem;
+}
+
+.carrito-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border-bottom: 1px solid var(--gray-light);
+  margin-bottom: 1rem;
+}
+
+.carrito-item img {
+  border-radius: 4px;
+}
+
+.carrito-cantidad {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.btn-cantidad {
+  background: var(--wine);
+  color: white;
+  border: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.btn-eliminar {
+  background: transparent;
+  border: none;
+  color: var(--gray-dark);
+  margin-left: auto;
+  cursor: pointer;
+}
+
+.btn-eliminar:hover {
+  color: var(--wine);
+}
+/* Notificación */
+.notificacion-carrito {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--wine);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 4px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1000;
+}
+
+.notificacion-carrito.mostrar {
+  opacity: 1;
+}
+
+/* Carrito vacío */
+.carrito-vacio {
+  text-align: center;
+  padding: 2rem;
+  color: var(--gray-dark);
+}
